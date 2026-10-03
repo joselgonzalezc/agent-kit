@@ -44,7 +44,7 @@ kit_copy "$KIT/core/docs-structure.md" "$AG/docs-structure.md"
 seed "$KIT/core/templates/pitfalls.md" "$AG/context/pitfalls.md"
 seed "$KIT/core/templates/rules-digest.md" "$AG/context/rules-digest.md"
 seed "$KIT/core/AGENTS.template.md" "$TARGET/AGENTS.md"
-mkdir -p "$TARGET/briefs"; [[ -e "$TARGET/briefs/.gitkeep" ]] || touch "$TARGET/briefs/.gitkeep"
+mkdir -p "$TARGET/briefs"; [[ -n "$(ls -A "$TARGET/briefs")" ]] || touch "$TARGET/briefs/.gitkeep"
 
 if [[ -n "$CONSTITUTION" && ! -e "$TARGET/$CONSTITUTION" ]]; then
   mkdir -p "$(dirname "$TARGET/$CONSTITUTION")"

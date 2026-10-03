@@ -1,0 +1,16 @@
+{
+  "outDir": ".claude/agents",
+  "tiers": {
+    "deep": "opus",
+    "standard": "sonnet",
+    "fast": "haiku"
+  },
+  "capabilities": {
+    "read": ["Read", "Grep", "Glob"],
+    "write": ["Write"],
+    "edit": ["Edit"],
+    "exec": ["Bash"],
+    "delegate": ["Agent"]
+  },
+  "extraTools": {}
+}

@@ -24,6 +24,7 @@ Output style: terse in replies; clear, complete prose in the documents themselve
 | `author` | a topic + audience              | write a new doc (technical, reference or user guide) |
 
 The doc index, the doc-impact map and the decisions/roadmap files are named in **Agent bindings**.
+Where new docs go (developer docs vs Diátaxis user guide): `<agents-dir>/docs-structure.md`.
 
 ## Source of truth (higher wins)
 

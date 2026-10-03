@@ -40,6 +40,7 @@ seed() { # src dst
 
 for f in "$KIT"/core/roles/*.md; do kit_copy "$f" "$AG/roles/$(basename "$f")"; done
 for f in "$KIT"/core/templates/*.md; do kit_copy "$f" "$AG/templates/$(basename "$f")"; done
+kit_copy "$KIT/core/docs-structure.md" "$AG/docs-structure.md"
 seed "$KIT/core/templates/pitfalls.md" "$AG/context/pitfalls.md"
 seed "$KIT/core/templates/rules-digest.md" "$AG/context/rules-digest.md"
 seed "$KIT/core/AGENTS.template.md" "$TARGET/AGENTS.md"

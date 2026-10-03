@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+- install copies `docs-structure.md` to `.agents/`; documenter points to it.
+
 ## 1.2.0
 
 - Roles learned from the first full spec run (videogames-manager spec 049):

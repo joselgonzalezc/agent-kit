@@ -85,3 +85,6 @@ constitution amendment.
 5. Ambiguity that changes behaviour → ask (or report as an open question). Never guess silently.
 6. Never weaken a rule, test or check to get green.
 7. Continue an agent that already holds the context instead of starting a fresh one.
+8. Broad read-only sweeps (many files, doc drift, summaries, second-opinion review) go to
+   `.agents/tools/scout.sh "<question>"` (`--fast` for simple ones) when it is installed: a cheaper
+   model reads, you get the answer. Verify what you rely on; never use it for code or commits.

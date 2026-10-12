@@ -4,7 +4,7 @@ Nothing in `core/` names a vendor, a model or a tool. Any agent runtime can use 
 
 | Runtime                                                                                     | Project instructions          | Roles                                                           |
 | ------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------- |
-| Tools that read `AGENTS.md` natively (Codex CLI, Gemini CLI via config, Copilot, Cursor, …) | `AGENTS.md`                   | Prompt: "Act as the role defined in `.agents/roles/<role>.md`." |
+| Tools that read `AGENTS.md` natively (Codex CLI, Antigravity CLI, Copilot, Cursor, …) | `AGENTS.md`                   | Prompt: "Act as the role defined in `.agents/roles/<role>.md`." |
 | Tools with their own subagent format                                                        | import or symlink `AGENTS.md` | write a renderer like `adapters/claude/render.mjs`              |
 | Plain chat model / API                                                                      | paste `AGENTS.md`             | system prompt = role file body                                  |
 

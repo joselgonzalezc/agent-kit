@@ -40,6 +40,7 @@ core/
       offline-sync.md         OS.* — local-first clients with background sync
   roles/                      lead, architect, reviewer, developer, documenter, commiter
   templates/                  brief, adr, pitfalls, rules-digest
+  tools/scout.sh              read-only delegate to a cheaper second model (Antigravity CLI)
   docs-structure.md           numbered developer docs + Diátaxis user guide
 adapters/
   claude/                     renderer → .claude/agents/*.md, tier/capability map, CLAUDE.md

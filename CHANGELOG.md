@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- `core/tools/scout.sh` (installed to `.agents/tools/`): read-only delegate to a second model
+  (default Antigravity CLI `agy`, plan mode + sandbox, working-tree guard). Protocol rule 8 in
+  `AGENTS.template.md` routes broad read-only sweeps to it.
+
 ## 1.2.1
 
 - install copies `docs-structure.md` to `.agents/`; documenter points to it.

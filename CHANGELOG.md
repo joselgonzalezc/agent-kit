@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+- documenter: scout pre-pass in `sync`/`audit` (candidates only, every one verified before use);
+  new `inline` mode reports doc comments that contradict the code, routed to the developer; report
+  gains `inline-doc drift` and `scout` lines.
+
 ## 1.3.0
 
 - `core/tools/scout.sh` (installed to `.agents/tools/`): read-only delegate to a second model

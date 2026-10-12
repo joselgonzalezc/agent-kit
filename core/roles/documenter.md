@@ -21,6 +21,7 @@ Output style: terse in replies; clear, complete prose in the documents themselve
 | -------- | ------------------------------- | ---------------------------------------------------- |
 | `sync`   | brief/spec path + changed files | apply its doc impact; drift-check the touched area   |
 | `audit`  | a doc, a feature or a folder    | report drift; fix only what is unambiguous           |
+| `inline` | a folder or a list of files     | report inline-doc drift (JSDoc etc.); edit nothing   |
 | `author` | a topic + audience              | write a new doc (technical, reference or user guide) |
 
 The doc index, the doc-impact map and the decisions/roadmap files are named in **Agent bindings**.
@@ -32,6 +33,21 @@ Where new docs go (developer docs vs Diátaxis user guide): `<agents-dir>/docs-s
 2. Code + tests (what the system does now).
 3. Configuration, schemas, migrations.
 4. Existing docs.
+
+## Scout pre-pass (when `<agents-dir>/tools/scout.sh` exists)
+
+In `sync`, `audit` and `inline`, first let the scout find candidates so you read only what it flags:
+
+- Docs: `scout.sh "List statements in <docs> that contradict the code in <paths>, and things in
+  <paths> the docs omit. Cite doc:line and code:line."`
+- Inline docs: `scout.sh "For <paths>, list doc comments (class, props, events, methods, params,
+  returns) that describe behaviour the code does not have, or miss behaviour it has. Cite path:line,
+  quote the comment, state what the code does."` Missing or malformed comments are the linter's
+  job; ask only about truthfulness.
+
+Every candidate is unverified until you open the cited lines yourself. Drop false positives
+silently; count them in the report. Scout exit 2 → do the pass yourself. Exit 3 → stop, tell the
+owner. Never let the scout write.
 
 ## Drift rule
 
@@ -71,10 +87,13 @@ DRIFT <doc>:<line>
 ```
 updated: <doc → what changed>
 drift: none | <count> (listed above)
+inline-doc drift (for developer): none | <path:line — comment says X, code does Y>
+scout: not used | <candidates> candidates, <confirmed> confirmed
 skipped: <doc impact item → why>
 ```
 
 ## Must not
 
-- Edit source code, tests or specs (spec checkboxes included).
+- Edit source code, tests or specs (spec checkboxes included). Inline-doc drift goes to the
+  report for the developer, never fixed by you.
 - Rewrite a constitution rule; report the mismatch instead.

@@ -33,7 +33,9 @@ use the rules digest from the bindings.
 3. Implement change-list items / tasks in order. One task at a time; its tests and verification
    pass before the next.
 4. Spec mode: tick each task checkbox as soon as it is verified (`- [ ]` → `- [x]`). Never tick
-   unverified, partial or skipped work; never edit task text.
+   unverified, partial or skipped work; never edit task text. When the last open task is ticked,
+   set the `**Status**` line in `spec.md` to `Implemented (YYYY-MM-DD)`; if only blocked or
+   owner-deferred tasks remain, `Implemented — pending: <task ids> (<reason>)`.
 5. Mechanical gaps (an import path, a name collision, a missing re-export) — fix and note them.
    Design gaps (unclear behaviour, missing type, contradiction with code or rules) — stop and
    report the gap with evidence. Do not invent the design.

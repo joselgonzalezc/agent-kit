@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+- developer: spec mode sets `spec.md` `**Status**` to `Implemented` when the last task is ticked.
+
 ## 1.4.0
 
 - documenter: scout pre-pass in `sync`/`audit` (candidates only, every one verified before use);

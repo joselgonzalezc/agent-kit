@@ -38,9 +38,9 @@ Where new docs go (developer docs vs Diátaxis user guide): `<agents-dir>/docs-s
 
 In `sync`, `audit` and `inline`, first let the scout find candidates so you read only what it flags:
 
-- Docs: `scout.sh "List statements in <docs> that contradict the code in <paths>, and things in
+- Docs: `scout.sh --fast "List statements in <docs> that contradict the code in <paths>, and things in
   <paths> the docs omit. Cite doc:line and code:line."`
-- Inline docs: `scout.sh "For <paths>, list doc comments (class, props, events, methods, params,
+- Inline docs: `scout.sh --fast "For <paths>, list doc comments (class, props, events, methods, params,
   returns) that describe behaviour the code does not have, or miss behaviour it has. Cite path:line,
   quote the comment, state what the code does."` Missing or malformed comments are the linter's
   job; ask only about truthfulness.

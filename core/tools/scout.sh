@@ -12,18 +12,18 @@
 # Safety: runs in plan mode + sandbox (no file writes, no shell). As a second guard it fingerprints
 # the working tree before and after; any change → exit 3 and the diff is left for the owner.
 #
-# Env: SCOUT_MODEL (default gemini-3.1-pro-high), SCOUT_FAST_MODEL (default gemini-3.8-flash-medium),
+# Env: SCOUT_MODEL (default claude-opus-4-6-thinking), SCOUT_FAST_MODEL (default gemini-3.8-flash-high),
 #      SCOUT_TIMEOUT (seconds, default 600), SCOUT_MAX_WORDS (default 400).
 set -euo pipefail
 
-MODEL="${SCOUT_MODEL:-gemini-3.1-pro-high}"
+MODEL="${SCOUT_MODEL:-claude-opus-4-6-thinking}"
 TIMEOUT="${SCOUT_TIMEOUT:-600}"
 MAX_WORDS="${SCOUT_MAX_WORDS:-400}"
 PROMPT=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --fast) MODEL="${SCOUT_FAST_MODEL:-gemini-3.8-flash-medium}"; shift ;;
+    --fast) MODEL="${SCOUT_FAST_MODEL:-gemini-3.8-flash-high}"; shift ;;
     --model) MODEL="$2"; shift 2 ;;
     --timeout) TIMEOUT="$2"; shift 2 ;;
     -h|--help) sed -n '2,17p' "$0"; exit 0 ;;

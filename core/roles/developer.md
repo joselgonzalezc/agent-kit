@@ -54,6 +54,10 @@ use the rules digest from the bindings.
 
 - No type escape hatches, no suppression comments (`ts-ignore`, `eslint-disable`) to get green.
 - Never weaken, skip or delete a test to make it pass. A test you believe is wrong is reported.
+- Missing unit tests for a pure module: when `<agents-dir>/tools/testgen.sh` exists, draft them with
+  it first (`--ref` one sibling test). Read the whole draft before adopting it: it must only add
+  tests, follow the project rules, and pass verify. Report `testgen: used | not used` with the
+  coverage line.
 - Comments explain why, never what.
 - Docs: do not rewrite docs yourself unless the brief/task assigns it to you; list the doc impact in
   your report so the documenter (or caller) handles it.

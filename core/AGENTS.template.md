@@ -88,3 +88,7 @@ constitution amendment.
 8. Broad read-only sweeps (many files, doc drift, summaries, second-opinion review) go to
    `.agents/tools/scout.sh "<question>"` (`--fast` for simple ones) when it is installed: a cheaper
    model reads, you get the answer. Verify what you rely on; never use it for code or commits.
+9. Unit tests for a pure module (helper, facade, domain) may be drafted with
+   `.agents/tools/testgen.sh <source> <test>` when it is installed: a cheaper model writes the test
+   in a throwaway worktree, the project hook (`.agents/testgen.config.sh`) verifies it. You review
+   the draft and adopt it with `cp`; you own it after that. Never for production code.

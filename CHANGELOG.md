@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.5.0
+
+- `core/tools/testgen.sh` (installed to `.agents/tools/`): drafts a unit test with a second model
+  (default `agy` + Claude Sonnet 4.6) in a detached worktree; the model may write only the test file;
+  the project hook `<agents-dir>/testgen.config.sh` links build/deps, verifies (coverage) and
+  lint-fixes; the draft lands in `<git-dir>/testgen/` for the caller to review and adopt. Skips the
+  model when the existing test already passes verify. Protocol rule 9; developer uses it for pure
+  modules.
+- scout: Gemini 3.1 Pro left the Antigravity CLI for AI Pro accounts; defaults are now
+  `claude-opus-4-6-thinking` and `--fast` `gemini-3.8-flash-high`.
+- documenter: scout pre-pass uses `--fast` (Flash high: accurate on drift; agy-hosted Opus is flaky
+  in print mode).
+
 ## 1.4.1
 
 - developer: spec mode sets `spec.md` `**Status**` to `Implemented` when the last task is ticked.

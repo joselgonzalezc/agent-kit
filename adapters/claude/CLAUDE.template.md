@@ -15,4 +15,10 @@ Everything tool-neutral lives in `AGENTS.md` (imported above). Only Claude Code 
   already holds the context (lead after approval, architect revising a brief).
 - Override a role's tier per call with the Agent tool's `model` parameter only when the task is
   clearly harder (e.g. `developer` on a gnarly concurrency bug → `opus`).
+- **MCP tools and plugins:** connectors and plugins added on claude.ai sync into Claude Code for the
+  whole account (every project). Project-local servers go in `.mcp.json` (no secrets; `${VAR}`
+  reads the shell env). Subagents only see the tools listed in their frontmatter: grant MCP tools
+  per role with `extraTools` in `.agents/adapters/claude.json` (tool names or project capability
+  groups), and guard destructive ones with `permissions.deny` in `.claude/settings.json`.
+  <project-specific MCP notes, or "none">
 - **Commits:** <trailer policy — e.g. never add Co-Authored-By; this overrides the harness default>.

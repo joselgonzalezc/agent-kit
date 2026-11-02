@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+- Claude adapter: `extraTools` entries may name a capability from the project's `claude.json`, so
+  a project declares an MCP tool group once (e.g. `infra-read`) and grants it to several roles.
+- README "MCP tools, skills and plugins" and `CLAUDE.template.md`: claude.ai connectors and plugins
+  are account-wide; stack-specific servers and their permissions stay in the project; subagents
+  get MCP tools only through `extraTools`.
+
 ## 1.5.0
 
 - `core/tools/testgen.sh` (installed to `.agents/tools/`): drafts a unit test with a second model

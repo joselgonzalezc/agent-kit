@@ -71,8 +71,12 @@ function render(file) {
     if (!mapped) throw new Error(`${file}: unknown capability "${cap}"`);
     for (const tool of mapped) if (!tools.includes(tool)) tools.push(tool);
   }
+  // extraTools entries are tool names or capability names from this config (project tool groups,
+  // e.g. an "infra-read" list of MCP tools), so a group is declared once and granted to many roles.
   const extra = (config.extraTools && config.extraTools[fields.name]) || [];
-  for (const tool of extra) if (!tools.includes(tool)) tools.push(tool);
+  for (const entry of extra) {
+    for (const tool of config.capabilities[entry] || [entry]) if (!tools.includes(tool)) tools.push(tool);
+  }
   return [
     '---',
     `name: ${fields.name}`,

@@ -41,6 +41,7 @@ core/
   roles/                      lead, architect, reviewer, developer, documenter, commiter
   templates/                  brief, adr, pitfalls, rules-digest
   tools/scout.sh              read-only delegate to a cheaper second model (Antigravity CLI)
+  tools/testgen.sh            unit-test drafts by a second model in a throwaway worktree
   docs-structure.md           numbered developer docs + Diátaxis user guide
 adapters/
   claude/                     renderer → .claude/agents/*.md, tier/capability map, CLAUDE.md
@@ -99,6 +100,23 @@ Then:
 3. Write `.agents/context/rules-digest.md` (one line per rule, same ids).
 4. Start `.agents/context/pitfalls.md` empty; add traps as they bite.
 5. `CLAUDE.md` just imports `AGENTS.md`; keep Claude-only mechanics there.
+
+## MCP tools, skills and plugins
+
+The kit ships **no** MCP servers, provider skills or credentials: integrations are per account or
+per project, never core (C2/C3).
+
+- **Account level.** Connectors, skills and plugins added on claude.ai sync into Claude Code and
+  are available in every project. Do not re-create them as kit skills (name clashes, duplicate
+  tools, wasted context).
+- **Project level.** Stack-specific servers (a database host, a deploy platform) go in the
+  project's `.mcp.json`, with secrets only in the shell env (`${VAR}`), never in a file.
+- **Roles.** A rendered subagent sees only the tools in its frontmatter, so MCP tools must be
+  granted. In the project's `.agents/adapters/claude.json`, define tool groups under
+  `capabilities` (e.g. `"infra-read": ["mcp__<server>__list_x", …]`) and grant them per role in
+  `extraTools` (`"developer": ["infra-read", "browser"]`). Keep `commiter` without MCP tools.
+- **Safety.** List destructive MCP tools (delete, restore, rotate, raw SQL on production) under
+  `permissions.deny` in the project's `.claude/settings.json`; allow only read tools.
 
 ## Update a project
 
